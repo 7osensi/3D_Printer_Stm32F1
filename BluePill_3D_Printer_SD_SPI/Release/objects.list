@@ -1,0 +1,8 @@
+"./Src/Delay_Program.o"
+"./Src/GPIO_prog.o"
+"./Src/RCC_prog.o"
+"./Src/SD_MODULE_prog.o"
+"./Src/main.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f103c8tx.o"

@@ -1,0 +1,5 @@
+Stepper_prog.c:18:13:HAL_StepperInit	1
+Stepper_prog.c:27:13:HAL_StepperRotateCCWFullStep	6
+Stepper_prog.c:67:13:HAL_StepperRotateCWFullStep	6
+Stepper_prog.c:107:13:HAL_StepperRotateCCWHalfStep	18
+Stepper_prog.c:199:13:HAL_StepperRotateCWHalfStep	18
