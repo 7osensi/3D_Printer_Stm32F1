@@ -7,7 +7,7 @@
 ===========================   - Note :
 									  *-
 									  *-
- ======================================================================================*/ 
+========================================================================================*/
 
 #ifndef _GPIO_INTERFACE_H
 #define _GPIO_INTERFACE_H
@@ -87,7 +87,7 @@ typedef enum{
 *
 *  Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
 */
-extern void MGIO_vResetCR(u8 Copy_u8PortName, u8 Copy_u8PinNum);
+extern void MGIO_vResetCR(u8 Copy_u8PortName);
 
 /*
 *   Name 			: MGPIO_vSetPinMode
@@ -188,6 +188,6 @@ extern void MGPIO_vWriteDataDIR(u8 Copy_u8PortName ,u8 Copy_u8PinNum ,u8 Copy_u8
 * 					  GPIO_PIN_5  || GPIO_PIN_6  || GPIO_PIN_7  || GPIO_PIN_8
 *
 */
-extern void MGPIO_vPortOutputByte(u8 Copy_u8Port, u8 Copy_u8Data, u8 Copy_u8StartBit);
+extern void MGPIO_vPortOutputByte(port_t Copy_u8PortName, u32 Copy_u32Data, u8 Copy_u8StartBit, u8 Copy_u8EndBit);
 
 #endif /* _GPIO_INTERFACE_H */

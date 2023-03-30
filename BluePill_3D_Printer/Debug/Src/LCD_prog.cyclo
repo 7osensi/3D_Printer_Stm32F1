@@ -1,0 +1,7 @@
+LCD_prog.c:18:13:HAL_LCD_Void_LcdInit	3
+LCD_prog.c:54:13:HAL_LCD_Void_LcdWriteCharacter	1
+LCD_prog.c:85:6:HAL_LCD_Void_LcdWriteCommand	1
+LCD_prog.c:117:13:HAL_LCD_Void_LcdWriteString	2
+LCD_prog.c:130:13:HAL_LCD_Void_LcdWriteNumber	8
+LCD_prog.c:182:13:HAL_LCD_Void_LcdGoTo	1
+LCD_prog.c:191:13:HAL_LCD_Void_LcdClr	1

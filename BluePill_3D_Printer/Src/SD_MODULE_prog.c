@@ -16,20 +16,18 @@
 #include "SD_MODULE_interface.h"
 /*======================================*/
 
-/* static */
 static void CS_Enable(void)
 {
 	/* Reset CS Pin to Activate */
 	MGPIO_vWriteData(SD_PORT, SD_CS_PIN, LOW);
 }
-/* static */
+
 static void CS_Disable(void)
 {
 	/* Set CS Pin to Deactivate */
 	MGPIO_vWriteData(SD_PORT, SD_CS_PIN, HIGH);
 }
 
-/* static unit testing : done  */
 static void H_SD_vPowerupSeq(void)
 {
 	/* Make Sure the Card is Not Selected */

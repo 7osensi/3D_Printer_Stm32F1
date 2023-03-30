@@ -32,10 +32,10 @@ void MRCC_vEnableClock( BusName_t BusName , u8 Copy_u8PerNum )
 {
 	switch(BusName)
 	{
-		case AHB     :   SET_BIT( RCC_AHBENR,Copy_u8PerNum );         break ;
+		case AHB     :  SET_BIT( RCC_AHBENR,Copy_u8PerNum );          break ;
 		case APB1    :  SET_BIT( RCC_APB1ENR,Copy_u8PerNum );         break ;
 		case APB2    :  SET_BIT( RCC_APB2ENR,Copy_u8PerNum );         break ;
-		default :     /* ERROR */          					   	      break ;
+		default :     /* Error */          					   	      break ;
 	}
 }
 /*==================================================   End_ Function    ==================================================*/
@@ -56,7 +56,7 @@ void MRCC_vDisableClock(BusName_t BusName , u8 Copy_u8PerNum )
 		case AHB     :  CLR_BIT( RCC_AHBENR, Copy_u8PerNum );         break ;
 		case APB1    :  CLR_BIT( RCC_APB1ENR,Copy_u8PerNum );         break ;
 		case APB2    :  CLR_BIT( RCC_APB2ENR,Copy_u8PerNum );         break ;
-		default :     /* ERROR */          		break ;
+		default :     /* Error */         					   		  break ;
 	}
 }
 /*==================================================   End_ Function    ==================================================*/

@@ -1,6 +1,0 @@
-GPIO_prog.c:18:6:MGIO_vResetCR	11
-GPIO_prog.c:70:6:MGPIO_vSetPinMode	35
-GPIO_prog.c:245:4:MGPIO_u8ReadData	5
-GPIO_prog.c:260:6:MGPIO_vWriteData	10
-GPIO_prog.c:286:6:MGPIO_vWriteDataDIR	10
-GPIO_prog.c:312:6:MGPIO_vPortOutputOneByte	5

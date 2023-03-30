@@ -15,53 +15,20 @@
 
 /*============================================   Start_Function   ============================================*/
 
-void MGIO_vResetCR(u8 Copy_u8PortName, u8 Copy_u8PinNum)
+extern void MGIO_vResetCR(u8 Copy_u8PortName)
 {
 	switch (Copy_u8PortName)
 	{
 	case _GPIOA_PORT:
-		if (Copy_u8PinNum <= 7)
-		{
-		GPIOA_CRL = 0;
-		}
-		else if(Copy_u8PinNum >= 8)
-		{
-		GPIOA_CRH = 0;
-		}
-		else
-		{
-			/* No Action  */
-		}
-	break;
+			GPIOA_CRL = 0;
+			GPIOA_CRH = 0;			break;
 	case _GPIOB_PORT:
-		if (Copy_u8PinNum <= 7)
-		{
-		GPIOB_CRL = 0;
-		}
-		else if(Copy_u8PinNum >= 8)
-		{
-		GPIOB_CRH = 0;
-		}
-		else
-		{
-			/* No Action  */
-		}
-	break;
+			GPIOB_CRL = 0;
+			GPIOB_CRH = 0;			break;
 	case _GPIOC_PORT:
-		if ( Copy_u8PinNum <= 7)
-		{
-		GPIOC_CRL = 0;
-		}
-		else if(Copy_u8PinNum >= 8)
-		{
-		GPIOC_CRH = 0;
-		}
-		else
-		{ /* No Action */
-
-		}
-	break;
-	default: 					        break;
+			GPIOC_CRL = 0;
+			GPIOC_CRH = 0;			break;
+	default: 					    break;
 	}
 }
 /*============================================   End_Function     ============================================*/
@@ -75,7 +42,7 @@ void MGPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode, u8 
 	/* Calculate the index of CRL and CRH
 	 * Pins <= 7 configured using CR[0]
 	 * Pins >= 8 configured using CR [1] */
-	if( Copy_u8PinNum <= 7)
+	if(Copy_u8PinNum <= 7)
 	{
 		L_u8Index = 0;
 	}
@@ -99,7 +66,7 @@ void MGPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode, u8 
 			/* 00: Analog mode */
 			if (Copy_u8Config == _MODE_ANALOG)
 			{
-				MGPIOA->CR[L_u8Index] &= ~(1 << ((4 * Copy_u8PinNum) + 2 ));
+				MGPIOA->CR[L_u8Index] &= ~(1 << ((4 * Copy_u8PinNum) + 2));
 			}
 			/* 01: Floating input (reset state) */
 			else if ( Copy_u8Config == _MODE_FLOATING)
@@ -117,7 +84,7 @@ void MGPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode, u8 
 			/* In output mode (MODE[1:0] > 00) , max speed 10 MHz */
 			MGPIOA->CR[L_u8Index] |= (1 << (4 * Copy_u8PinNum));
 			/* 00: General purpose output push-pull */
-			if ( Copy_u8Config == _MODE_GP_OUT_PUSH_PULL)
+			if (Copy_u8Config == _MODE_GP_OUT_PUSH_PULL)
 			{
 				MGPIOA->CR[L_u8Index] &= ~(1 << ((4 * Copy_u8PinNum) + 2));
 			}
@@ -129,7 +96,7 @@ void MGPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode, u8 
 			/* 10: Alternate function output Push-pull */
 			else if (Copy_u8Config == _MODE_GP_OUT_ALT_PUSH_PULL)
 			{
-				MGPIOA->CR[L_u8Index] |= (2 << (( 4 * Copy_u8PinNum) + 2));
+				MGPIOA->CR[L_u8Index] |= (2 << ((4 * Copy_u8PinNum) + 2));
 
 			}
 			/* 11: Alternate function output Open-drain */
@@ -153,11 +120,11 @@ void MGPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode, u8 
 			/* 01: Floating input (reset state) */
 			else if (Copy_u8Config == _MODE_FLOATING)
 			{
-				MGPIOB->CR[L_u8Index] |= ( 1 << ((4 * Copy_u8PinNum ) + 2));
+				MGPIOB->CR[L_u8Index] |= (1 << ((4 * Copy_u8PinNum) + 2));
 			}
 			/* 10: Input with pull-up / pull-down */
 			else if (Copy_u8Config == _MODE_IN_PU_PD) {
-				MGPIOB->CR[L_u8Index] |= ( 2 << ((4 * Copy_u8PinNum ) + 2));
+				MGPIOB->CR[L_u8Index] |= (2 << ((4 * Copy_u8PinNum) + 2));
 			}
 		}
 		else if (Copy_u8Mode == _MODE_OUTPUT)
@@ -215,7 +182,7 @@ void MGPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode, u8 
 			/* In output mode (MODE[1:0] > 00) , max speed 10 MHz */
 			MGPIOC->CR[L_u8Index] |= (1 << (4 * Copy_u8PinNum));
 			/* 00: General purpose output push-pull */
-			if (Copy_u8Config == _MODE_GP_OUT_PUSH_PULL )
+			if (Copy_u8Config == _MODE_GP_OUT_PUSH_PULL)
 			{
 				MGPIOC->CR[L_u8Index] &= ~(1 << ((4 * Copy_u8PinNum) + 2));
 			}
@@ -324,26 +291,19 @@ void MGPIO_vPortOutputOneByte(u8 Copy_u8Port, u8 Copy_u8Data, u8 Copy_u8StartBit
 
 }
 /*============================================   End_Function     ============================================*/
-
-
-/*
- *
- *
- *
- *
- *
- *
- *
-void MGPIO_vPortOutputByte(port_t Copy_u8PortName, u32 Copy_u32Data, u8 Copy_u8StartBit,u8 Copy_u8EndBit)
+/*============================================   Start_Function   ============================================*/
+extern void MGPIO_vPortOutputByte(port_t Copy_u8PortName, u32 Copy_u32Data, u8 Copy_u8StartBit, u8 Copy_u8EndBit)
 {
-	 u8 i;
-	 u32 Copy_32DataBit=1;
-	 Copy_u8EndBit-=Copy_u8StartBit;
-	for (i=0;i<Copy_u8EndBit;i++)
+	 u8 L_u8Counter;
+	 u32 Copy_32DataBit = 1;
+	 Copy_u8EndBit -= Copy_u8StartBit;
+	for (L_u8Counter = 0; L_u8Counter < Copy_u8EndBit; L_u8Counter++)
 	{
-		Copy_32DataBit=(Copy_32DataBit<<1) +1;
+		Copy_32DataBit = ((Copy_32DataBit << 1) + 1);
 	}
-	MGPIO(Copy_u8PortName) ->ODR = (MGPIO(Copy_u8PortName) ->ODR & ~(Copy_32DataBit <<Copy_u8StartBit))|(Copy_u32Data<<Copy_u8StartBit);
+	if(Copy_u8PortName == GPIOA_PORT)
+	{
+		MGPIOA->ODR = (MGPIOA->ODR & ~(Copy_32DataBit << Copy_u8StartBit)) | (Copy_u32Data<<Copy_u8StartBit);
+	}
 }
- *
- */
+/*============================================   End_Function     ============================================*/
