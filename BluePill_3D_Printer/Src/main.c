@@ -29,32 +29,45 @@
 /*===========  INCLUDE HAL  ===========*/
 #include "SD_MODULE_interface.h"
 #include "Stepper_interface.h"
+#include "LCD_interface.h"
 /*======================================*/
 
 int main(void)
 {
-//	volatile int i = 0;
+	/* Local declarations */
+	u8 L_u8Name1[] = {"Hussein"};
+	u8 L_u8Name2[] = {"Mohamed"};
 
-	/* Initialize System Clock */
+	/* Initialize system clock */
 	MRCC_vInitSystemCLK();
 
-	/* Enable Clock for IOPBEN on APB2 bus */
+	/* Enable clock for IOPBEN on APB2 bus */
+	MRCC_vEnableClock(APB2 , _PERIPHERAL_EN_IOPAEN);
 	MRCC_vEnableClock(APB2 , _PERIPHERAL_EN_IOPBEN);
 
-	/* Reset CRL Register */
-	MGIO_vResetCR(_GPIOB_PORT, GPIO_PIN_3);
+	/* Reset CRL & CRH registers */
+	MGIO_vResetCR(_GPIOA_PORT);
+	MGIO_vResetCR(_GPIOB_PORT);
+
+
+	/* LCD init */
+	HAL_LCD_Void_LcdInit();
 
 	/* Stepper Init */
 	HAL_StepperInit();
 
+
+
+
     /* Loop forever */
 	while(1)
 	{
+		/* Write string */
+		HAL_LCD_Void_LcdWriteString(L_u8Name1);
+		HAL_LCD_Void_LcdGoTo(1, 0);
+		HAL_LCD_Void_LcdWriteString(L_u8Name2);
+
 		/* Stepper Rotate */
 		HAL_StepperRotateCWHalfStep();
-//		for(i = 0; i < 1000000; i++){};
-//		HAL_StepperRotateCWFullStep();
-//		for(i = 0; i < 1000000; i++){};
-//		HAL_StepperRotateCWHalfStep();
 	}
 }

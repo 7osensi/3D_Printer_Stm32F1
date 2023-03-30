@@ -2,6 +2,7 @@
 "./Src/AFIO_prog.o"
 "./Src/Delay_Program.o"
 "./Src/GPIO_prog.o"
+"./Src/LCD_prog.o"
 "./Src/RCC_prog.o"
 "./Src/SD_MODULE_prog.o"
 "./Src/SPI_prog.o"

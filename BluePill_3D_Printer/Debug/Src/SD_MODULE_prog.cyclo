@@ -1,0 +1,13 @@
+SD_MODULE_prog.c:19:13:CS_Enable	1
+SD_MODULE_prog.c:25:13:CS_Disable	1
+SD_MODULE_prog.c:31:13:H_SD_vPowerupSeq	2
+SD_MODULE_prog.c:49:13:H_SD_vSendCommand	1
+SD_MODULE_prog.c:66:11:H_SD_u8ReadResponse1	3
+SD_MODULE_prog.c:89:11:H_SD_u8GoIdleState	1
+SD_MODULE_prog.c:110:13:H_SD_vReadResponse3_7	2
+SD_MODULE_prog.c:132:13:H_SD_vSendIfCond	1
+SD_MODULE_prog.c:151:13:H_SD_vReadOCR	1
+SD_MODULE_prog.c:170:11:H_SD_u8SendApp	1
+SD_MODULE_prog.c:191:11:H_SD_u8SendOpCond	1
+SD_MODULE_prog.c:212:11:H_SD_u8Init	9
+SD_MODULE_prog.c:301:4:H_SD_u8ReadSingleBlock	6
